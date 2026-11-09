@@ -1,0 +1,104 @@
+@use "variables" as v;
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+body {
+  margin: 0;
+  background: v.$paper;
+  color: v.$ink;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+h1,
+h2,
+h3 {
+  line-height: 1.12;
+  font-weight: 400;
+}
+h1,
+h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  letter-spacing: -0.045em;
+}
+h1 {
+  font-size: clamp(3rem, 6.5vw, 6rem);
+}
+h2 {
+  font-size: clamp(2.3rem, 4vw, 3.8rem);
+}
+h3 {
+  font-size: 1.45rem;
+}
+a {
+  color: inherit;
+  text-underline-offset: 0.25em;
+}
+button {
+  font: inherit;
+}
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+:focus-visible {
+  outline: 3px solid #b97725;
+  outline-offset: 5px;
+}
+::selection {
+  background: #d9c596;
+  color: v.$navy;
+}
+.skip-link {
+  position: fixed;
+  top: -6rem;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.75rem 1rem;
+  background: white;
+  color: v.$navy;
+}
+.skip-link:focus {
+  top: 1rem;
+}
+main {
+  min-height: 60vh;
+}
+/* Let grid children shrink around long headings and contact addresses. */
+main * {
+  min-width: 0;
+}
+h1,
+h2,
+h3,
+p,
+dd,
+a {
+  overflow-wrap: anywhere;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

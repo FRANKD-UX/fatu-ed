@@ -1,0 +1,62 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+.button {
+  min-height: 44px;
+  max-width: 100%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.75rem 1.25rem;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  overflow-wrap: normal;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+  &:focus-visible {
+    outline: 3px solid var(--cta-focus-color, #{v.$navy});
+    outline-offset: 4px;
+  }
+}
+.primary {
+  background: v.$navy;
+  color: #fff;
+  border-color: var(--cta-primary-border, #{v.$navy});
+  &:hover {
+    background: v.$blue;
+    border-color: var(--cta-primary-border, #{v.$blue});
+  }
+  &:active {
+    background: v.$navy;
+  }
+}
+.secondary {
+  background: transparent;
+  color: var(--cta-secondary-color, #{v.$navy});
+  border-color: currentColor;
+  &:hover {
+    background: var(--cta-secondary-hover-bg, #{v.$navy});
+    color: var(--cta-secondary-hover-color, #fff);
+    border-color: var(--cta-secondary-color, #{v.$navy});
+  }
+  &:active {
+    background: v.$blue;
+    border-color: v.$blue;
+    color: #fff;
+  }
+}
+.text {
+  @include m.text-link;
+  padding-inline: 0;
+  border: 0;
+  border-radius: 0;
+  color: var(--cta-link-color, #{v.$navy});
+  text-align: left;
+  justify-content: flex-start;
+}

@@ -1,0 +1,42 @@
+@use "variables" as v;
+@mixin container {
+  width: min(100% - 3rem, 1240px);
+  margin-inline: auto;
+}
+
+// Shared interaction treatments for links and CTA groups across CSS Modules.
+@mixin text-link {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  padding-block: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.5;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+  transition: text-decoration-color 0.15s ease;
+  &:hover,
+  &:focus-visible {
+    text-decoration-thickness: 2px;
+  }
+  &:active {
+    text-decoration-color: transparent;
+  }
+}
+@mixin actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+// Keep CTA contrast on existing navy and blue sections.
+@mixin dark-actions {
+  --cta-primary-border: #{v.$gold};
+  --cta-focus-color: #fff;
+  --cta-secondary-color: #fff;
+  --cta-secondary-hover-bg: #fff;
+  --cta-secondary-hover-color: #{v.$navy};
+  --cta-link-color: #fff;
+}

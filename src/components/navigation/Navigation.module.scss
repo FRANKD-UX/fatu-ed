@@ -1,0 +1,76 @@
+@use "../../styles/variables" as v;
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1.9rem;
+  a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    white-space: nowrap;
+    transition:
+      border-color 0.15s ease,
+      color 0.15s ease;
+    text-decoration: none;
+    padding: 0.7rem 0;
+    border-bottom: 2px solid transparent;
+    &[aria-current],
+    &:hover {
+      border-color: v.$gold;
+    }
+    &:active {
+      color: #d8c18e;
+    }
+  }
+}
+.toggle {
+  display: none;
+}
+@media (max-width: 1023px) {
+  .toggle {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: inherit;
+    background: transparent;
+    border: 1px solid #a6afbc;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+    &:hover,
+    &[aria-expanded="true"] {
+      background: v.$blue;
+    }
+    &:active {
+      background: v.$navy;
+    }
+  }
+  .nav {
+    display: none;
+    position: absolute;
+    inset: 100% 0 auto;
+    background: v.$navy;
+    color: white;
+    padding: 1rem 1.5rem 2rem;
+    border-top: 1px solid #ffffff25;
+    box-shadow: 0 12px 20px #0002;
+    &.open {
+      display: flex;
+      align-items: stretch;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+    a {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      font-size: 1rem;
+    }
+  }
+}

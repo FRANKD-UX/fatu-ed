@@ -1,0 +1,301 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+.container {
+  @include m.container;
+}
+.eyebrow {
+  display: block;
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+.hero {
+  padding-block: 5rem;
+  h1 {
+    max-width: 60rem;
+    margin-bottom: 2rem;
+  }
+}
+.navy {
+  background: v.$navy;
+  color: v.$paper;
+  .eyebrow {
+    color: #d8c18e;
+  }
+}
+.blue {
+  background: #214579;
+  color: #fff;
+  .eyebrow {
+    color: #e3cd9f;
+  }
+}
+.warm {
+  background: #e7dfcc;
+  color: #26332e;
+}
+.intro {
+  max-width: 48rem;
+  font-size: 1.15rem;
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+.section {
+  @include m.container;
+  padding-block: 4.5rem;
+  display: grid;
+  grid-template-columns: 0.85fr 1.2fr;
+  gap: 5rem;
+  border-bottom: 1px solid #d8d9d3;
+  h2 {
+    font-size: clamp(2rem, 3.5vw, 3rem);
+  }
+}
+.prose {
+  color: #48576a;
+  h3 {
+    color: v.$ink;
+    font-family: Georgia, serif;
+    margin: 2rem 0 1rem;
+  }
+  p:last-child {
+    margin-bottom: 0;
+  }
+  a:not([class]) {
+    @include m.text-link;
+    color: v.$navy;
+  }
+  ul,
+  ol {
+    padding-left: 1.4rem;
+  }
+  li {
+    padding: 0.5rem 0 0.5rem 0.5rem;
+  }
+  blockquote {
+    margin: 0 0 1.5rem;
+    font-family: Georgia, serif;
+    font-size: 1.35rem;
+    color: v.$ink;
+  }
+}
+.timeline {
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+  li {
+    display: grid;
+    grid-template-columns: 5rem 1fr;
+    gap: 1.5rem;
+    border-bottom: 1px solid #d8d9d3;
+    padding: 1.3rem 0;
+    &:first-child {
+      padding-top: 0;
+    }
+  }
+  time {
+    font:
+      1.7rem Georgia,
+      serif;
+    color: #8a6c31;
+  }
+}
+.values {
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 2rem;
+  li {
+    border-bottom: 1px solid #d8d9d3;
+    padding: 1rem 0;
+  }
+}
+.notice {
+  background: #f0e7d3;
+  border-left: 3px solid #977b3e;
+  padding: 1.5rem;
+  color: #4b402c;
+  margin-bottom: 2rem;
+  font-size: 0.94rem;
+  strong {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  p {
+    margin: 0;
+  }
+}
+.contactBand {
+  @include m.dark-actions;
+  background: #214579;
+  color: white;
+  padding-block: 4rem;
+  > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+  }
+  h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  p {
+    max-width: 40rem;
+    margin-bottom: 0;
+  }
+}
+.actions {
+  @include m.actions;
+}
+.contactDetails {
+  display: grid;
+  gap: 1.5rem;
+  margin: 0;
+  dt {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+    color: #5e6872;
+  }
+  dd {
+    margin: 0;
+    font-size: 1.15rem;
+  }
+}
+.pathways {
+  display: flex;
+  flex-direction: column;
+  a {
+    @include m.text-link;
+    color: v.$navy;
+    padding-block: 1.3rem;
+    border-bottom: 1px solid #cfd2ce;
+    small {
+      display: block;
+      color: #586370;
+      font-size: 0.78rem;
+      margin-top: 0.2rem;
+    }
+  }
+}
+@media (max-width: 700px) {
+  .hero {
+    padding-block: 3.5rem;
+  }
+  .section {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding-block: 3rem;
+  }
+  .values {
+    grid-template-columns: 1fr;
+  }
+  .contactBand > div {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+  .timeline li {
+    grid-template-columns: 4rem 1fr;
+    gap: 1rem;
+  }
+}
+
+// Optional full-width content inside the existing page container, for cards and media.
+.wide {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+  h2 {
+    margin-bottom: 0;
+  }
+}
+.sectionLead {
+  max-width: 48rem;
+  margin-bottom: 2rem;
+}
+.subheading {
+  color: v.$navy;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.prose .founderQuote {
+  padding: 1.5rem;
+  border-left: 2px solid v.$gold;
+  background: #edece6;
+  margin-block: 2rem 0;
+  p {
+    margin-bottom: 1rem;
+  }
+  cite {
+    display: block;
+    font:
+      0.8rem/1.5 Arial,
+      Helvetica,
+      sans-serif;
+    color: #48576a;
+  }
+}
+.prose .cards {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  gap: 1.25rem;
+  > li {
+    padding: clamp(1.25rem, 2.5vw, 2rem);
+    border: 1px solid #d8d9d3;
+    border-top: 2px solid v.$gold;
+    background: #fffefb;
+  }
+  h3 {
+    margin: 0 0 1rem;
+    font-size: 1.4rem;
+    line-height: 1.25;
+  }
+  p {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+  }
+}
+.prose .checklist {
+  padding-left: 1.25rem;
+  margin-block: 0 2rem;
+  li {
+    padding-block: 0.75rem;
+    border-bottom: 1px solid #d8d9d3;
+  }
+  li::marker {
+    color: v.$blue;
+  }
+}
+.prose .steps {
+  padding-left: 1.5rem;
+  margin-block: 0 2rem;
+  li {
+    padding: 1rem 0 1rem 0.75rem;
+    border-bottom: 1px solid #d8d9d3;
+  }
+  li::marker {
+    color: v.$navy;
+    font-weight: 600;
+  }
+}
+.heroStatus {
+  padding-top: 1rem;
+  border-top: 1px solid #bba06b;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+@media (min-width: 701px) and (max-width: 1000px) {
+  .section {
+    gap: 2.5rem;
+  }
+}

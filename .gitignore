@@ -1,0 +1,13 @@
+node_modules/
+.next/
+out/
+.env*
+!.env.example
+*.tsbuildinfo
+
+# Local source snapshots and tool/credential directories are not project source.
+src.zip
+.agents/
+.codex/
+.aws/
+.DS_Store
