@@ -1,6 +1,7 @@
 import { PageHero, ContentSection } from "@/components/divisions/PageShell";
-import { LinkButton } from "@/components/ui/LinkButton";
-import { site, whatsappEnquiry } from "@/config/site";
+import { Suspense } from "react";
+import { EnquiryComposer } from "@/components/contact/EnquiryComposer";
+import { site } from "@/config/site";
 import { pageMetadata } from "@/config/metadata";
 import s from "@/components/divisions/Pages.module.scss";
 export const metadata = pageMetadata(
@@ -8,32 +9,6 @@ export const metadata = pageMetadata(
   "Contact FATU.E.D in Mdantsane, East London by WhatsApp, telephone or email for design, trading and future academy enquiries.",
   "/contact",
 );
-const pathways = [
-  {
-    title: "FATU.E.D Designs",
-    description: "Custom clothing, alterations, uniforms and millinery.",
-    message:
-      "Hello FATU.E.D Designs, I would like to discuss a design enquiry.",
-  },
-  {
-    title: "FATU.E.D General Trading",
-    description: "Product enquiries, quotations and business opportunities.",
-    message:
-      "Hello FATU.E.D General Trading, I would like to discuss an enquiry.",
-  },
-  {
-    title: "F.E.D Old School Academy",
-    description:
-      "Future programme questions and expressions of interest. Not enrolment.",
-    message:
-      "Hello, I would like to express interest in future F.E.D Old School Academy programmes. I understand the academy is not accepting enrolments.",
-  },
-  {
-    title: "General Enquiry",
-    description: "For everything else, start a conversation with us.",
-    message: "Hello FATU.E.D, I have a general enquiry.",
-  },
-];
 export default function Contact() {
   return (
     <>
@@ -49,6 +24,7 @@ export default function Contact() {
         title="A conversation starts here"
       >
         <dl className={s.contactDetails}>
+          <div><dt>Location</dt><dd>{site.contact.location}</dd></div>
           <div>
             <dt>Telephone</dt>
             <dd>
@@ -83,33 +59,12 @@ export default function Contact() {
           visiting.
         </p>
       </ContentSection>
-      <ContentSection label="Choose your conversation" title="How can we help?">
-        <p>Select a division to start a WhatsApp enquiry.</p>
-        <div className={s.pathways}>
-          {pathways.map((p) => (
-            <a key={p.title} href={whatsappEnquiry(p.message)}>
-              <span>
-                {p.title}
-                <small>{p.description}</small>
-              </span>
-            </a>
-          ))}
-        </div>
-      </ContentSection>
-      <ContentSection
-        label="Enquiry form · Future phase"
-        title="For now, reach us directly"
-      >
-        <p>
-          A website enquiry form is planned for a future phase. Please send your
-          enquiry by email or WhatsApp, or call us using the details above.
-        </p>
-        <div className={s.actions}>
-          <LinkButton href={site.contact.emailUri}>Email Us</LinkButton>
-          <LinkButton href={site.contact.whatsapp} variant="secondary">
-            WhatsApp Us
-          </LinkButton>
-        </div>
+      <ContentSection id="enquiry" label="Prepare your message" title="How can we help?">
+        <p>Choose a topic, add your name and tell us what you have in mind. Review your draft, then open WhatsApp or email to send it yourself.</p>
+        <Suspense fallback={<p>Loading the enquiry composer. You can also use the direct contact links above.</p>}>
+          <EnquiryComposer />
+        </Suspense>
+        <noscript><p>The composer needs JavaScript. Please use the telephone, WhatsApp or email links above to contact us directly.</p></noscript>
       </ContentSection>
     </>
   );

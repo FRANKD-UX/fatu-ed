@@ -1,5 +1,6 @@
 import { PageHero, ContentSection } from "@/components/divisions/PageShell";
 import { LinkButton } from "@/components/ui/LinkButton";
+import s from "@/components/divisions/Pages.module.scss";
 export default function NotFound() {
   return (
     <>
@@ -11,7 +12,10 @@ export default function NotFound() {
           Visit our homepage to discover our businesses, or contact us for
           assistance.
         </p>
-        <LinkButton href="/">Back to Home</LinkButton>
+        <div className={s.actions}>
+          <LinkButton href="/">Back to Home</LinkButton>
+          <LinkButton href="/contact" variant="secondary">Contact FATU.E.D</LinkButton>
+        </div>
       </ContentSection>
     </>
   );

@@ -51,11 +51,15 @@ export function ContactBand({
   text = "Tell us what you have in mind. We would love to hear from you.",
   primaryLabel = "WhatsApp Us",
   whatsappMessage,
+  contactHref = "/contact#enquiry",
+  contactLabel = "Prepare an enquiry",
 }: {
   title?: string;
   text?: string;
   primaryLabel?: string;
   whatsappMessage?: string;
+  contactHref?: string;
+  contactLabel?: string;
 }) {
   return (
     <section className={s.contactBand}>
@@ -75,8 +79,8 @@ export function ContactBand({
           >
             {primaryLabel}
           </LinkButton>
-          <LinkButton href="/contact" variant="secondary">
-            Contact Us
+          <LinkButton href={contactHref} variant="secondary">
+            {contactLabel}
           </LinkButton>
         </div>
       </div>

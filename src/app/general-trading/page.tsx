@@ -1,3 +1,4 @@
+import { MediaPlaceholder } from "@/components/ui/MediaPlaceholder";
 import {
   PageHero,
   ContentSection,
@@ -23,6 +24,7 @@ export default function Trading() {
         title="Delivery in your time."
       >
         <p>{trading.introduction}</p>
+        <LinkButton href="/contact?topic=trading#enquiry">Prepare a quotation enquiry</LinkButton>
       </PageHero>
       <ContentSection
         label="Our approach"
@@ -35,6 +37,7 @@ export default function Trading() {
           business.
         </p>
         <p>{trading.availability}</p>
+        <MediaPlaceholder label="General Trading · Optional media" aspectRatio="3 / 2" context="Reserved for approved business imagery. Products and availability are confirmed by enquiry." />
       </ContentSection>
       <ContentSection
         label="How we can help"
@@ -61,12 +64,15 @@ export default function Trading() {
           quotation. Availability and any delivery arrangements need to be
           confirmed before you make plans around an order.
         </p>
-        <LinkButton href="/contact">Make a trading enquiry</LinkButton>
+        <LinkButton href="/contact?topic=trading#enquiry">Prepare a quotation enquiry</LinkButton>
       </ContentSection>
       <ContactBand
+        contactHref="/contact?topic=trading#enquiry"
+        contactLabel="Prepare a trading enquiry"
+        primaryLabel="Discuss a quotation on WhatsApp"
         title="Talk to General Trading"
         text="Start a product or service enquiry, discuss a quotation or introduce a business opportunity."
-        whatsappMessage="Hello FATU.E.D General Trading, I would like to discuss a product or service enquiry."
+        whatsappMessage="Hello FATU.E.D General Trading, I would like to discuss a quotation for my product or service requirements."
       />
     </>
   );

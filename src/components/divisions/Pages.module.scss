@@ -19,6 +19,7 @@
   }
 }
 .navy {
+  @include m.dark-actions;
   background: v.$navy;
   color: v.$paper;
   .eyebrow {
@@ -26,6 +27,7 @@
   }
 }
 .blue {
+  @include m.dark-actions;
   background: #214579;
   color: #fff;
   .eyebrow {
@@ -169,22 +171,6 @@
     font-size: 1.15rem;
   }
 }
-.pathways {
-  display: flex;
-  flex-direction: column;
-  a {
-    @include m.text-link;
-    color: v.$navy;
-    padding-block: 1.3rem;
-    border-bottom: 1px solid #cfd2ce;
-    small {
-      display: block;
-      color: #586370;
-      font-size: 0.78rem;
-      margin-top: 0.2rem;
-    }
-  }
-}
 @media (max-width: 700px) {
   .hero {
     padding-block: 3.5rem;
@@ -298,4 +284,26 @@
   .section {
     gap: 2.5rem;
   }
+}
+
+.founderProfile {
+  display: grid;
+  grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
+  align-items: start;
+  gap: clamp(2rem, 5vw, 5rem);
+}
+.contactDetails > div {
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid #d8d9d3;
+}
+.intro > a { margin-top: 1.5rem; }
+.contactBand .actions { flex-shrink: 0; max-width: 24rem; }
+@media (max-width: 700px) {
+  .founderProfile { grid-template-columns: minmax(0, 1fr); }
+  .founderProfile > figure { max-width: 28rem; }
+}
+@media (max-width: 480px) {
+  .actions { flex-direction: column; align-items: stretch; width: 100%; }
+  .contactBand .actions { max-width: none; }
+  .contactBand h2 { font-size: 2rem; }
 }

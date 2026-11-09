@@ -1,3 +1,4 @@
+import { MediaPlaceholder } from "@/components/ui/MediaPlaceholder";
 import Link from "next/link";
 import { LinkButton } from "@/components/ui/LinkButton";
 import { company } from "@/content/company";
@@ -98,17 +99,18 @@ export default function Home() {
                 </div>
                 <div className={s.divisionBody}>
                   {"future" in d && (
-                    <span className={s.badge}>Future development project</span>
+                    <span className={s.badge}>Future initiative · Not operating</span>
                   )}
                   <h3>{d.name}</h3>
                   <p>{d.description}</p>
                   {"supporting" in d && <p>{d.supporting}</p>}
                   <p className={s.slogan}>{d.slogan}</p>
-                  <Link href={d.href}>{d.cta}</Link>
+                  <LinkButton href={d.href}>{d.cta}</LinkButton>
                 </div>
               </article>
             ))}
           </div>
+          <p className={s.divisionNote}>General Trading and Designs welcome enquiries. The academy is a future initiative, not operating, accredited or accepting enrolments.</p>
         </div>
       </section>
       <section className={s.reasons}>
@@ -141,13 +143,7 @@ export default function Home() {
         </div>
       </section>
       <section className={s.founder}>
-        <div className={s.portrait}>
-          <span>Meet the founder</span>
-          <span className={s.portraitInitials} aria-hidden="true">
-            FM
-          </span>
-          <small>Portrait space · Approved photograph to follow</small>
-        </div>
+        <MediaPlaceholder label="Fatima Mugaro · Founder portrait" />
         <div className={s.founderCopy}>
           <span className={s.eyebrow}>The woman behind the vision</span>
           <h2>{company.founder}</h2>

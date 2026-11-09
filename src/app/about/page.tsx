@@ -1,3 +1,4 @@
+import { MediaPlaceholder } from "@/components/ui/MediaPlaceholder";
 import {
   PageHero,
   ContentSection,
@@ -31,15 +32,20 @@ export default function About() {
           <p key={paragraph}>{paragraph}</p>
         ))}
       </ContentSection>
-      <ContentSection label="Meet the founder" title={company.founder}>
-        <p className={s.subheading}>{company.titles}</p>
-        {company.profile.founderStory.map((paragraph) => (
-          <p key={paragraph}>{paragraph}</p>
-        ))}
-        <blockquote className={s.founderQuote}>
-          <p>“{company.quote}”</p>
-          <cite>{company.founder}</cite>
-        </blockquote>
+      <ContentSection label="Meet the founder" title={company.founder} wide>
+        <div className={s.founderProfile}>
+          <MediaPlaceholder label="Fatima Mugaro · Founder portrait" />
+          <div>
+            <p className={s.subheading}>{company.titles}</p>
+            {company.profile.founderStory.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+            <blockquote className={s.founderQuote}>
+              <p>“{company.quote}”</p>
+              <cite>{company.founder}</cite>
+            </blockquote>
+          </div>
+        </div>
       </ContentSection>
       <ContentSection
         label="Our business journey"

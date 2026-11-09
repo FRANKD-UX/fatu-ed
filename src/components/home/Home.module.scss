@@ -174,7 +174,7 @@
 }
 .divisionGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.2rem;
 }
 .division {
@@ -253,13 +253,7 @@
     font-size: 1.15rem;
     line-height: 1.4;
   }
-  a {
-    @include m.text-link;
-    margin-top: auto;
-    padding-top: 1rem;
-    color: v.$navy;
-    border-top: 1px solid #dcdedc;
-  }
+  > a { margin-top: auto; }
 }
 .badge {
   width: fit-content;
@@ -323,34 +317,7 @@
   gap: 7rem;
   padding-block: 7rem;
   align-items: center;
-}
-.portrait {
-  min-height: 420px;
-  background: #e7e3d8;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border: 1px solid #d3cdbf;
-  position: relative;
-  .portraitInitials {
-    font-family: Georgia, serif;
-    font-size: 7rem;
-    line-height: 1;
-    color: #8e8775;
-    font-style: italic;
-    margin: auto;
-  }
-  small {
-    font-size: 0.65rem;
-    color: #625d50;
-    letter-spacing: 0.05em;
-  }
-  > span:first-child {
-    text-transform: uppercase;
-    font-size: 0.6rem;
-    letter-spacing: 0.14em;
-  }
+  > figure { max-width: 28rem; }
 }
 .founderCopy {
   h2 {
@@ -488,9 +455,6 @@
   .vision {
     padding-block: 4rem;
   }
-  .portrait {
-    min-height: 330px;
-  }
   .connect {
     padding-block: 4rem;
     .container {
@@ -498,4 +462,26 @@
       gap: 0.5rem;
     }
   }
+}
+
+.divisionNote {
+  max-width: 48rem;
+  margin: 2rem 0 0;
+  color: #48576a;
+  font-size: 0.9rem;
+}
+@media (min-width: 701px) and (max-width: 850px) {
+  .heroGrid { grid-template-columns: minmax(0, 1fr); }
+  .heroArt { min-height: 260px; }
+}
+@media (min-width: 701px) and (max-width: 1000px) {
+  .divisionGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .division:last-child { grid-column: 1 / -1; }
+}
+@media (max-width: 480px) {
+  .heroArt { min-height: 240px; padding: 1.5rem; }
+  .heroBottom { flex-direction: column; gap: 0.5rem; font-size: 0.7rem; }
+  .heroBottom span { max-width: none; }
+  .actions { flex-direction: column; align-items: stretch; }
+  .disciplines { font-size: 0.7rem; letter-spacing: 0.08em; }
 }

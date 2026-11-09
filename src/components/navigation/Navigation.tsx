@@ -25,7 +25,11 @@ export function Navigation() {
         setOpen(false);
     };
     const resize = () => {
-      if (window.matchMedia("(min-width: 1024px)").matches) setOpen(false);
+      if (window.matchMedia("(min-width: 1024px)").matches) {
+        if (document.activeElement === toggle.current)
+          menu.current?.querySelector<HTMLElement>('[aria-current="page"]')?.focus();
+        setOpen(false);
+      }
     };
     document.addEventListener("keydown", close);
     document.addEventListener("pointerdown", outside);
@@ -39,6 +43,7 @@ export function Navigation() {
   return (
     <>
       <button
+        type="button"
         ref={toggle}
         className={styles.toggle}
         aria-expanded={open}
@@ -66,7 +71,10 @@ export function Navigation() {
             key={item.href}
             href={item.href}
             aria-current={pathname === item.href ? "page" : undefined}
-            onClick={() => setOpen(false)}
+            onClick={() => {
+              if (pathname === item.href) toggle.current?.focus();
+              setOpen(false);
+            }}
           >
             {item.label}
           </Link>

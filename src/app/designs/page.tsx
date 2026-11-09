@@ -1,3 +1,4 @@
+import { LinkButton } from "@/components/ui/LinkButton";
 import {
   PageHero,
   ContentSection,
@@ -29,6 +30,7 @@ export default function Designs() {
           ideas to FATU.E.D Designs and discuss the garment you would like to
           create.
         </p>
+        <LinkButton href="/contact?topic=designs#enquiry">Prepare a design enquiry</LinkButton>
       </PageHero>
       <ContentSection
         label="The work behind the design"
@@ -54,8 +56,10 @@ export default function Designs() {
         title="Clothing, craft & detail"
         wide
       >
+        <p className={s.sectionLead}>Photographs are pending. These labelled spaces represent service categories, not completed projects or examples of our work.</p>
         <Gallery
           images={designsGallery}
+          placeholders={designServices.map((service) => ({ label: service.title, context: "Service category · Approved work photographs to follow." }))}
           emptyTitle="Our work, in photographs"
           emptyDescription="Approved photographs of FATU.E.D clothing and millinery will be shared here. In the meantime, contact us to discuss your design ideas and ask about examples relevant to your enquiry."
         />
@@ -86,6 +90,9 @@ export default function Designs() {
         </p>
       </ContentSection>
       <ContactBand
+        contactHref="/contact?topic=designs#enquiry"
+        contactLabel="Prepare a design enquiry"
+        primaryLabel="Discuss a design on WhatsApp"
         title="Contact FATU.E.D Designs"
         text="Tell us about your custom clothing, uniform, alteration or millinery enquiry."
         whatsappMessage="Hello FATU.E.D Designs, I would like to discuss a design enquiry."

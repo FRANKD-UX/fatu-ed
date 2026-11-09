@@ -1,0 +1,39 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+.composer {
+  border: 1px solid #d8d9d3;
+  background: #fffefb;
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+.field {
+  display: grid;
+  gap: 0.5rem;
+  margin-block: 1.5rem;
+  label { font-weight: 600; color: v.$navy; }
+  input, select, textarea {
+    width: 100%;
+    min-height: 48px;
+    padding: 0.75rem;
+    border: 1px solid #6b7580;
+    border-radius: 3px;
+    color: v.$ink;
+    background: #fff;
+    font: inherit;
+    font-size: 1rem;
+  }
+  textarea { resize: vertical; }
+  [aria-invalid="true"] { border: 2px solid #a12d26; }
+  p { margin: 0; }
+}
+.help { font-size: 0.875rem; color: #48576a; }
+.error { color: #a12d26; font-size: 0.9rem; }
+.error:empty { display: none; }
+.notice { border-left: 3px solid v.$gold; padding: 1rem; background: #f0e7d3; color: #4b402c; }
+.preview { border-top: 2px solid v.$gold; margin-top: 2rem; padding-top: 1rem; }
+.draft { white-space: pre-wrap; padding: 1rem; background: v.$paper; overflow-wrap: anywhere; }
+.actions { @include m.actions; margin-block: 1.5rem; }
+.composer button { cursor: pointer; }
+@media (max-width: 480px) {
+  .actions { align-items: stretch; flex-direction: column; }
+  .composer button { width: 100%; }
+}

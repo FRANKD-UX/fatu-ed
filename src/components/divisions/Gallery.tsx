@@ -1,4 +1,5 @@
 import { GalleryPhoto } from "./GalleryPhoto";
+import { MediaPlaceholder } from "@/components/ui/MediaPlaceholder";
 import s from "./Gallery.module.scss";
 
 export type GalleryImage = Readonly<{
@@ -14,10 +15,12 @@ export function Gallery({
   images,
   emptyTitle,
   emptyDescription,
+  placeholders = [],
 }: {
   images: readonly GalleryImage[];
   emptyTitle: string;
   emptyDescription: string;
+  placeholders?: readonly { label: string; context?: string }[];
 }) {
   const groups = new Map<string, GalleryImage[]>();
   for (const image of images) {
@@ -38,7 +41,7 @@ export function Gallery({
     groups.set(category, group);
   }
 
-  if (!groups.size) {
+  if (!groups.size && !placeholders.length) {
     return (
       <div className={s.empty}>
         <strong>{emptyTitle}</strong>
@@ -47,16 +50,26 @@ export function Gallery({
     );
   }
 
+  const categories = [
+    ...new Set([...placeholders.map((item) => item.label), ...groups.keys()]),
+  ];
   return (
-    <div className={s.groups}>
-      {Array.from(groups, ([category, photos]) => (
+    <div className={`${s.groups} ${placeholders.length ? s.categoryGroups : ""}`}>
+      {categories.map((category) => (
         <section key={category} aria-label={category} className={s.group}>
           <h3>{category}</h3>
-          <div className={s.gallery}>
-            {photos.map((photo) => (
-              <GalleryPhoto key={photo.src} image={photo} />
-            ))}
-          </div>
+          {groups.has(category) ? (
+            <div className={s.gallery}>
+              {groups.get(category)!.map((photo) => (
+                <GalleryPhoto key={photo.src} image={photo} />
+              ))}
+            </div>
+          ) : (
+            <MediaPlaceholder
+              label={category}
+              context={placeholders.find((item) => item.label === category)?.context}
+            />
+          )}
         </section>
       ))}
     </div>

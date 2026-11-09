@@ -1,3 +1,4 @@
+import { LinkButton } from "@/components/ui/LinkButton";
 import {
   PageHero,
   ContentSection,
@@ -28,8 +29,9 @@ export default function Academy() {
         <p>Fatu’s Empowerment and Development</p>
         <p>Learn the skill. Master the craft. Create your future.</p>
         <p className={s.heroStatus}>
-          A future vision for practical skills development.
+          Future initiative · Not operating, accredited or accepting enrolments.
         </p>
+        <LinkButton href="/contact?topic=academy#enquiry">Prepare an expression of interest</LinkButton>
       </PageHero>
       <ContentSection label="Concept & purpose" title="A vision taking shape">
         <div className={s.notice}>
@@ -92,6 +94,10 @@ export default function Academy() {
         </p>
         <Gallery
           images={classroomGallery}
+          placeholders={[
+            { label: "Proposed classroom", context: "Future initiative placeholder. No existing academy facility is represented." },
+            { label: "Practical training space", context: "Future initiative placeholder. No current classes or training facilities are represented." },
+          ]}
           emptyTitle="A learning environment, envisioned"
           emptyDescription="The proposed setting would support practical sewing and garment-making. No photographs of an operational academy or current classes are presented here."
         />
@@ -112,6 +118,8 @@ export default function Academy() {
         </p>
       </ContentSection>
       <ContactBand
+        contactHref="/contact?topic=academy#enquiry"
+        contactLabel="Prepare an expression of interest"
         title="Connect with our vision"
         text="Ask a question about the proposed academy or express general interest in its future development. Enrolment is not open."
         primaryLabel="Ask about the future academy"

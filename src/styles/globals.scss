@@ -76,7 +76,9 @@ main {
   min-height: 60vh;
 }
 /* Let grid children shrink around long headings and contact addresses. */
-main * {
+main *,
+header *,
+footer * {
   min-width: 0;
 }
 h1,

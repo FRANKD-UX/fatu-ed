@@ -1,5 +1,7 @@
 # FATU.E.D — Phase 2 implementation report
 
+Historical report for the original Phase 2 work. See [UX-HANDOFF.md](UX-HANDOFF.md) for the subsequent placeholder, layout and enquiry-composer implementation and its verification.
+
 ## A. Completed work
 
 - **About:** Added a company introduction that distinguishes the existing trading/design activities from the proposed academy. Developed the founder narrative around the confirmed 1996 certificate, 2003 business start and 2014 registration. Retained the supplied mission, vision, values and founder message. The confirmed timeline uses semantic year markers. A supplied founder quotation replaces the empty portrait container.
