@@ -38,7 +38,7 @@ for (const route of routes) {
   assets.push(
     ...attributes(
       html,
-      /<link\b[^>]*\brel="(?:stylesheet|preload|modulepreload)"[^>]*\bhref="([^"]*)"/g,
+      /<link\b[^>]*\brel="(?:stylesheet|preload|modulepreload|icon|apple-touch-icon)"[^>]*\bhref="([^"]*)"/g,
     ),
   );
   const canonicals = attributes(

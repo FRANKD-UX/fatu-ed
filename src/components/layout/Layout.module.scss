@@ -46,25 +46,15 @@
   text-decoration: none;
   &:focus-visible { outline-color: v.$gold; }
 }
-.fashionMark { width: 58px; height: 86px; color: v.$gold; flex-shrink: 0; }
-.headerBrand { padding-left: 1.25rem; border-left: 1px solid v.$gold; display: block; }
+.headerEmblem { width: 84px; height: auto; flex-shrink: 0; border-radius: .5rem; }
+.headerBrand { display: block; }
 .headerName {
   display: block;
-  font: 400 clamp(2.1rem, 3.2vw, 3.5rem)/1 Georgia, serif;
+  font: 600 clamp(1.75rem, 2.4vw, 2.4rem)/1.15 Arial, sans-serif;
   letter-spacing: .035em;
   white-space: nowrap;
-  > span { color: v.$gold; }
 }
-.headerBrand small { display: block; margin-top: .7rem; font: .55rem/1.5 Arial, sans-serif; letter-spacing: .17em; white-space: nowrap; }
-.brandFlourish {
-  display: block;
-  width: 48%;
-  height: .6rem;
-  margin: .1rem auto 0;
-  border-bottom: 2px solid v.$gold;
-  border-radius: 50%;
-  transform: rotate(-3deg);
-}
+.headerBrand small { display: block; margin-top: .4rem; font: .65rem/1.5 Arial, sans-serif; letter-spacing: .14em; white-space: nowrap; }
 .wordmark {
   text-decoration: none;
   font-family: Georgia, serif;
@@ -136,10 +126,9 @@
     gap: .75rem;
   }
   .headerWordmark { gap: .65rem; }
-  .fashionMark { width: 32px; height: 60px; }
-  .headerBrand { padding-left: .65rem; }
-  .headerName { font-size: clamp(1.6rem, 5.8vw, 2.4rem); }
-  .headerBrand small { font-size: .4rem; letter-spacing: .08em; margin-top: .5rem; }
+  .headerEmblem { width: 52px; }
+  .headerName { font-size: clamp(1.25rem, 5.8vw, 2rem); }
+  .headerBrand small { font-size: .55rem; letter-spacing: .06em; margin-top: .35rem; }
   .headerFabric::before { right: -10rem; opacity: .5; }
   .headerFabric::after { display: none; }
   .wordmark {
@@ -159,6 +148,5 @@
 @media (min-width: 701px) and (max-width: 1100px) {
   .headerInner { gap: 1rem; }
   .headerWordmark { gap: .65rem; }
-  .fashionMark { width: 44px; height: 74px; }
-  .headerBrand { padding-left: .85rem; }
+  .headerEmblem { width: 72px; }
 }

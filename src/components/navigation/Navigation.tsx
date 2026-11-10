@@ -3,7 +3,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { navigation } from "@/content/navigation";
-import { FashionMark } from "@/components/layout/FashionMark";
 import styles from "./Navigation.module.scss";
 // Keep the footer's source order while giving fashion prominence in the header.
 const headerNavigation = [navigation[0], navigation[3], navigation[1], navigation[2], navigation[4], navigation[5]];
@@ -28,7 +27,7 @@ export function Navigation() {
         setOpen(false);
     };
     const resize = () => {
-      if (window.matchMedia("(min-width: 1024px)").matches) {
+      if (window.matchMedia("(min-width: 1280px)").matches) {
         if (document.activeElement === toggle.current)
           menu.current?.querySelector<HTMLElement>('[aria-current="page"]')?.focus();
         setOpen(false);
@@ -83,7 +82,6 @@ export function Navigation() {
           </Link>
         ))}
         <Link href="/contact?topic=designs#enquiry" className={styles.designCta} onClick={() => setOpen(false)}>
-          <FashionMark />
           Request a Design
           <span className={styles.ctaArrow} aria-hidden="true" />
         </Link>

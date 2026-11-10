@@ -3,6 +3,7 @@ import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { siteUrl } from "@/config/site";
+import { withBasePath } from "@/config/paths";
 import "@/styles/globals.scss";
 export const metadata: Metadata = {
   metadataBase: siteUrl,
@@ -13,6 +14,17 @@ export const metadata: Metadata = {
   description:
     "A South African enterprise bringing together General Trading, Fashion & Design, and a vision for Empowerment & Development.",
   applicationName: "FATU.E.D",
+  icons: {
+    icon: {
+      url: withBasePath("/images/branding/favicon.ico"),
+      type: "image/x-icon",
+    },
+    apple: {
+      url: withBasePath("/images/branding/apple-touch-icon.png"),
+      sizes: "180x180",
+      type: "image/png",
+    },
+  },
 };
 export default function RootLayout({
   children,
