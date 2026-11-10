@@ -1,0 +1,114 @@
+@use "../../styles/variables" as v;
+
+.lookbook {
+  --gutter: clamp(1.25rem, 4vw, 4rem);
+  --rail-image-height: clamp(240px, calc(100svh - 330px), 640px);
+  color: v.$ink;
+  background: v.$paper;
+}
+.chapterHeading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 1.25rem;
+  h3 { font: italic 400 clamp(2.3rem, 4.4vw, 4.6rem)/1.08 "Baskerville", "Palatino Linotype", Georgia, serif; letter-spacing: -.04em; margin: .6rem 0 0; color: v.$navy; }
+  p { max-width: 22rem; margin: 0 0 .25rem; font-size: .9rem; }
+}
+.chapterNumber { font-size: .7rem; text-transform: uppercase; letter-spacing: .16em; color: v.$blue; }
+.railScene { scroll-margin-top: 0; }
+.carouselStage { padding-block: 2rem 1.5rem; background: v.$paper; }
+.railHeading, .railFooter { padding-inline: var(--gutter); max-width: 1600px; margin-inline: auto; }
+.railInstructions { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .75rem; font-size: .75rem; margin-bottom: 1.25rem;
+  > span { color: v.$blue; }
+  a { display: inline-flex; align-items: center; min-height: 44px; text-underline-offset: .3em; }
+}
+.railViewport { overflow-x: auto; overscroll-behavior-x: contain; scrollbar-color: v.$gold v.$paper; padding-bottom: .5rem; }
+.railTrack { position: relative; display: flex; width: max-content; max-width: none; gap: clamp(1rem, 2vw, 2rem); padding-inline: var(--gutter); align-items: flex-start; }
+.railPhoto { flex: 0 0 auto; margin: 0;
+  .imageMat { height: var(--rail-image-height); }
+  .imageSurface, picture { height: 100%; }
+  img { height: 100%; object-fit: contain; }
+}
+// Every slide keeps its original link; only off-screen slides wrap to the right.
+.railScene[data-carousel="true"] {
+  .railViewport { overflow: hidden; }
+  .railTrack { display: block; width: 100%; }
+  .railPhoto { position: absolute; left: var(--gutter); top: 0; will-change: transform; }
+}
+.railFooter { display: flex; align-items: center; gap: 2rem; padding-top: 1rem; padding-right: calc(var(--gutter) + 4.5rem); font-size: .75rem; }
+.progress { flex: 1; height: 2px; overflow: hidden; background: rgba(v.$navy, .16);
+  span { display: block; width: 100%; height: 100%; background: v.$blue; transform-origin: left; }
+}
+.railButtons { display: flex; gap: .65rem;
+  button { min-height: 44px; padding: .45rem 1rem; border: 1px solid v.$gold; background: transparent; color: v.$navy; border-radius: 999px; font-size: .8rem; cursor: pointer; }
+  button:hover { background: v.$navy; color: v.$paper; }
+}
+.lookbook a:focus-visible, .lookbook button:focus-visible { outline: 3px solid v.$blue; outline-offset: 4px; }
+.railPhoto > a, .revealPhoto > a { display: block; text-decoration: none; }
+.imageMat { position: relative; background: rgba(v.$gold, .1); border: 1px solid rgba(v.$gold, .65); }
+.imageSurface { display: block; transform-origin: center; picture { display: block; } }
+.imageMat img { display: block; width: 100%; height: auto; }
+// The fixed rail frame contains each complete image, including collage watermarks.
+.railPhoto .imageMat img { height: 100%; object-fit: contain; }
+.viewOriginal { position: absolute; right: .75rem; bottom: .75rem; padding: .4rem .65rem; color: v.$navy; background: v.$paper; font-size: .7rem; opacity: 0; transition: opacity .2s ease; }
+.lookbook a:hover .viewOriginal, .lookbook a:focus-visible .viewOriginal { opacity: 1; }
+.caption { display: flex; align-items: baseline; justify-content: space-between; gap: .75rem; margin: 0; padding-top: .9rem; font-size: .85rem; line-height: 1.5; }
+.photoNumber { font-size: .7rem; color: v.$blue; }
+.revealChapter { padding: clamp(3rem, 6vw, 6rem) var(--gutter) 1.5rem; max-width: 1520px; margin-inline: auto; scroll-margin-top: 2rem;
+  > .chapterHeading { margin-bottom: 2.5rem; padding-top: 2rem; border-top: 1px solid v.$gold; }
+  > .chapterHeading::before { content: ""; width: 48px; height: 16px; flex-shrink: 0; align-self: flex-start; margin-top: .25rem; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='16'%3E%3Cpath fill='%23fff' d='M0 0h48v16H0z'/%3E%3Cpath fill='%23000' d='m8 0 8 8-8 8-8-8zm16 0 8 8-8 8-8-8zm16 0 8 8-8 8-8-8z'/%3E%3Cpath fill='%23fff' d='m8 4 4 4-4 4-4-4zm16 0 4 4-4 4-4-4zm16 0 4 4-4 4-4-4z'/%3E%3C/svg%3E") center / 48px 16px; }
+}
+.masonryGrid { columns: 3; column-gap: clamp(1rem, 2.5vw, 2.5rem); }
+.revealPhoto { margin: 0 0 2rem; break-inside: avoid; transform-origin: center; }
+.editorialGrid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); align-items: start; gap: clamp(1.5rem, 4vw, 4rem);
+  .revealPhoto { grid-column: span 5; margin: 0; }
+  .revealPhoto:nth-child(4n + 1), .revealPhoto:nth-child(4n) { grid-column: span 7; }
+  .revealPhoto:nth-child(4n + 2) { margin-top: 12%; }
+  .revealPhoto:nth-child(4n + 3) { margin-top: 5%; }
+  .revealPhoto:last-child { grid-column: 3 / 11; margin-top: 0; }
+}
+.chapterEnd { display: flex; justify-content: space-between; gap: 1rem; border-bottom: 1px solid v.$gold; padding-block: 2rem 1rem; margin-top: 1.5rem; color: v.$blue; font-size: .7rem; letter-spacing: .05em; }
+
+@media (max-width: 1023px), (max-height: 619px), (prefers-reduced-motion: reduce) {
+  .railScene { height: auto !important; }
+  .railScene .carouselStage { position: relative !important; height: auto !important; display: block; }
+  .railViewport { overflow: visible !important; }
+  .railTrack { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; height: auto !important; transform: none !important; gap: 2rem 1.25rem; }
+  .railPhoto { position: relative !important; left: auto !important; top: auto !important; transform: none !important; width: auto !important; .imageMat { height: auto; } .imageSurface, picture { height: auto; } .imageMat img { height: auto; } }
+  .railFooter { padding-top: 1.5rem; }
+  .railButtons, .progress { display: none; }
+}
+@media (max-width: 900px) {
+  .chapterHeading { align-items: flex-start; flex-direction: column; gap: .8rem; p { max-width: 35rem; } }
+  .revealChapter > .chapterHeading::before { margin-bottom: .25rem; }
+  .masonryGrid { columns: 2; }
+  .editorialGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem 1.25rem;
+    .revealPhoto:nth-child(n) { grid-column: auto; margin-top: 0; }
+    .revealPhoto:first-child, .revealPhoto:nth-child(5), .revealPhoto:last-child { grid-column: 1 / -1; }
+  }
+}
+@media (max-width: 639px) {
+  .railTrack { grid-template-columns: 1fr; gap: 2rem; }
+  .railInstructions { align-items: flex-start; flex-direction: column; gap: .25rem; }
+  .carouselStage { padding-top: 2.5rem; }
+  .masonryGrid { columns: 1; }
+  .editorialGrid { grid-template-columns: 1fr; .revealPhoto:nth-child(n) { grid-column: auto; } }
+  .chapterEnd { font-size: .65rem; }
+  .caption { font-size: .8rem; }
+  .viewOriginal { position: static; display: block; width: fit-content; opacity: 1; padding: .4rem .5rem; font-size: .7rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lookbook *, .lookbook *::before, .lookbook *::after { animation: none !important; transition: none !important; }
+  .revealPhoto, .imageSurface, .caption { transform: none !important; opacity: 1 !important; }
+  .editorialGrid .revealPhoto { margin-top: 0; }
+}
+@media print {
+  .railScene { height: auto !important; }
+  .railScene .carouselStage { position: static !important; height: auto !important; }
+  .railViewport { overflow: visible !important; }
+  .railTrack { display: grid !important; width: 100%; height: auto !important; grid-template-columns: repeat(2, 1fr); transform: none !important; }
+  .railPhoto { position: relative !important; left: auto !important; top: auto !important; transform: none !important; width: auto !important; .imageMat, .imageSurface, picture, .imageMat img { height: auto; } }
+  .revealPhoto, .imageSurface, .caption { transform: none !important; opacity: 1 !important; }
+  .railButtons, .progress, .viewOriginal { display: none; }
+}

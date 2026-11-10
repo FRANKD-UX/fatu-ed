@@ -1,7 +1,7 @@
-﻿import Image from "next/image";
-import { withBasePath } from "@/config/paths";
-import { designsGallery } from "@/content/galleries";
+﻿import { designsGallery } from "@/content/galleries";
 import s from "./Designs.module.scss";
+import { LookbookGalleries } from "./LookbookGallery";
+import { lookbookPreviews } from "./lookbook-previews";
 
 // Descriptions are local to this portfolio; shared gallery content stays intact.
 const descriptions = [
@@ -33,20 +33,21 @@ const chapters = [
 ];
 
 export function DesignsPortfolio() {
+  const lookbookChapters = chapters.map(({ numbers, ...chapter }) => ({
+    ...chapter,
+    photos: numbers.map((number) => {
+      const image = designsGallery[number - 1];
+      const [caption, alt] = descriptions[number - 1];
+      return { number, src: image.src, width: image.width, height: image.height, caption, alt, previews: lookbookPreviews[number] };
+    }),
+  }));
   return (
     <section id="portfolio" className={s.portfolio} aria-labelledby="portfolio-title">
-      <div className={s.sectionHeading}><div><span className={s.eyebrow}>The design portfolio / 20 photographs</span><h2 id="portfolio-title">A world of <em>colour & craft.</em></h2></div><p>Real garments. Personal style.<br />Explore the work of FATU.E.D Designs.</p></div>
-      <nav className={s.portfolioNav} aria-label="Portfolio collections">{chapters.map((chapter, index) => <a href={`#${chapter.id}`} key={chapter.id}><span>0{index + 1}</span>{chapter.title}</a>)}<span className={s.viewNote}>Select a photograph to view in full</span></nav>
-      {chapters.map((chapter, index) => (
-        <section id={chapter.id} className={s.chapter} key={chapter.id} aria-labelledby={`${chapter.id}-title`}>
-          <div className={s.chapterHeading}><span className={s.chapterNumber}>0{index + 1}</span><h3 id={`${chapter.id}-title`}>{chapter.title}</h3><p>{chapter.description}</p></div>
-          <div className={s.photoColumns}>{chapter.numbers.map((number) => {
-            const [caption, alt] = descriptions[number - 1];
-            const image = designsGallery[number - 1];
-            return <figure className={s.photo} key={number}><a href={withBasePath(image.src)} aria-label={`View full photograph: ${alt}`}><div className={s.photoFrame}><Image src={withBasePath(image.src)} alt={alt} width={image.width} height={image.height} sizes="(max-width: 540px) calc(100vw - 40px), (max-width: 900px) 45vw, 30vw" loading="lazy" /><span className={s.photoAction}>View full photograph</span></div><figcaption><span>{caption}</span><span className={s.photoNumber}>{String(number).padStart(2, "0")}</span></figcaption></a></figure>;
-          })}</div>
-        </section>
-      ))}
+      <div className={s.portfolioIntro}>
+        <div className={s.sectionHeading}><div><span className={s.eyebrow}>The design portfolio / 20 photographs</span><h2 id="portfolio-title">A world of <em>colour & craft.</em></h2></div><p>Real garments. Personal style.<br />Explore the work of FATU.E.D Designs.</p></div>
+        <nav className={s.portfolioNav} aria-label="Portfolio collections">{chapters.map((chapter, index) => <a href={`#${chapter.id}`} key={chapter.id}><span>0{index + 1}</span>{chapter.title}</a>)}<span className={s.viewNote}>Select a photograph to view in full</span></nav>
+      </div>
+      <LookbookGalleries chapters={lookbookChapters} />
     </section>
   );
 }
