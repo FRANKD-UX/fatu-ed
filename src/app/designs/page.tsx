@@ -1,102 +1,47 @@
+﻿import Image from "next/image";
+import Link from "next/link";
 import { LinkButton } from "@/components/ui/LinkButton";
-import {
-  PageHero,
-  ContentSection,
-  ContactBand,
-} from "@/components/divisions/PageShell";
-import { DetailCards } from "@/components/divisions/DetailCards";
-import { Gallery } from "@/components/divisions/Gallery";
-import { designsGallery } from "@/content/galleries";
+import { ContactBand } from "@/components/divisions/PageShell";
 import { designServices, orderSteps, divisions } from "@/content/divisions";
 import { pageMetadata } from "@/config/metadata";
-import s from "@/components/divisions/Pages.module.scss";
+import { withBasePath } from "@/config/paths";
+import { DesignsPortfolio } from "./DesignsPortfolio";
+import s from "./Designs.module.scss";
 
-export const metadata = pageMetadata(
-  "FATU.E.D Designs",
-  "Explore custom clothing, ladies’ fashion, church choir uniforms, alterations, garment production and millinery from FATU.E.D Designs in East London.",
-  "/designs",
-);
+export const metadata = pageMetadata("FATU.E.D Designs", "Discover custom clothing, ladies’ fashion, choir uniforms and millinery in the FATU.E.D Designs portfolio, from Mdantsane, East London.", "/designs");
 
 export default function Designs() {
   return (
-    <>
-      <PageHero
-        eyebrow="FATU.E.D Designs"
-        title="Dream. Design. Create. Sew. Grow."
-        tone="blue"
-      >
-        <p>
-          Custom clothing, alterations, choir uniforms and millinery. Bring your
-          ideas to FATU.E.D Designs and discuss the garment you would like to
-          create.
-        </p>
-        <LinkButton href="/contact?topic=designs#enquiry">Prepare a design enquiry</LinkButton>
-      </PageHero>
-      <ContentSection
-        label="The work behind the design"
-        title="Creativity in every stitch"
-      >
-        <p>{divisions[1].supporting}</p>
-        <p>
-          From an individual garment to a coordinated church choir uniform, the
-          starting point is your brief. Share the style, measurements and
-          references that matter to you so we can discuss the work involved.
-        </p>
-        <p>
-          Design details, quotations and production arrangements are agreed
-          directly with the business.
-        </p>
-      </ContentSection>
-      <ContentSection label="Our design services" title="Made with care" wide>
-        <DetailCards items={designServices} />
-      </ContentSection>
-      <ContentSection
-        id="portfolio"
-        label="Design portfolio"
-        title="Clothing, craft & detail"
-        wide
-      >
-        <p className={s.sectionLead}>Photographs are pending. These labelled spaces represent service categories, not completed projects or examples of our work.</p>
-        <Gallery
-          images={designsGallery}
-          placeholders={designServices.map((service) => ({ label: service.title, context: "Service category · Approved work photographs to follow." }))}
-          emptyTitle="Our work, in photographs"
-          emptyDescription="Approved photographs of FATU.E.D clothing and millinery will be shared here. In the meantime, contact us to discuss your design ideas and ask about examples relevant to your enquiry."
-        />
-      </ContentSection>
-      <ContentSection label="Our promise" title={divisions[1].slogan}>
-        <p>
-          Quality workmanship and attention to your requirements guide our
-          approach. The conversation before production helps establish the
-          design, fit and finishing you are looking for.
-        </p>
-        <p>
-          Please discuss any changes to your brief with the business so that the
-          work and arrangements can be reviewed together.
-        </p>
-      </ContentSection>
-      <ContentSection
-        label="A personal process"
-        title="From your idea to an agreed order"
-      >
-        <ol className={s.steps}>
-          {orderSteps.map((step) => (
-            <li key={step}>{step}</li>
-          ))}
-        </ol>
-        <p>
-          Orders, quotations and any payment arrangements are handled directly
-          with the business.
-        </p>
-      </ContentSection>
-      <ContactBand
-        contactHref="/contact?topic=designs#enquiry"
-        contactLabel="Prepare a design enquiry"
-        primaryLabel="Discuss a design on WhatsApp"
-        title="Contact FATU.E.D Designs"
-        text="Tell us about your custom clothing, uniform, alteration or millinery enquiry."
-        whatsappMessage="Hello FATU.E.D Designs, I would like to discuss a design enquiry."
-      />
-    </>
+    <div className={s.designs}>
+      <section className={s.hero} aria-labelledby="designs-title">
+        <div className={s.heroCopy}>
+          <span className={s.eyebrow}>FATU.E.D Designs / East London</span>
+          <h1 id="designs-title">Your vision.<br />Our <em>craft.</em></h1>
+          <p className={s.heroMotto}>Dream. Design. Create. Sew. Grow.</p>
+          <p className={s.heroIntro}>Clothing with character. From a personal statement to a choir in harmony, discover the colour, detail and craftsmanship behind our work.</p>
+          <div className={s.actions}><LinkButton href="#portfolio">Explore the portfolio</LinkButton><Link href="/contact?topic=designs#enquiry" className={s.textLink}>Prepare a design enquiry</Link></div>
+          <span className={s.heroFootnote}>Custom clothing · Choir uniforms · Millinery</span>
+        </div>
+        <figure className={s.heroPhoto}>
+          <Image src={withBasePath("/images/designs/design-01.jpeg")} alt="White dress with lace detailing, styled with a white wide-brimmed hat" width={960} height={1280} sizes="(max-width: 760px) 100vw, 48vw" preload />
+          <figcaption><span>A study in white</span><span>FATU.E.D Designs</span></figcaption>
+        </figure>
+      </section>
+      <section className={s.introduction} aria-labelledby="craft-title">
+        <span className={s.eyebrow}>Creativity in every stitch</span>
+        <h2 id="craft-title">Made for the person.<br /><em>Made for the moment.</em></h2>
+        <div><p>{divisions[1].supporting}</p><p>Expressive fabrics, thoughtful details and a personal brief. Every conversation begins with what you want to create.</p></div>
+      </section>
+      <DesignsPortfolio />
+      <section className={s.services} aria-labelledby="services-title">
+        <div className={s.sectionHeading}><div><span className={s.eyebrow}>The work behind the wardrobe</span><h2 id="services-title">Your idea. Our expertise.</h2></div><p>From the first reference to the finishing details, tell us what you have in mind.</p></div>
+        <div className={s.serviceList}>{designServices.map((service, index) => <div className={s.service} key={service.title}><span className={s.number}>0{index + 1}</span><h3>{service.title}</h3><p>{service.description}</p></div>)}</div>
+      </section>
+      <section className={s.process} aria-labelledby="process-title">
+        <div><span className={s.eyebrow}>A personal process</span><h2 id="process-title">Let’s bring your<br /><em>idea to life.</em></h2><p>Share your inspiration, the occasion and the details that matter to you.</p><p className={s.promise}>{divisions[1].slogan}</p></div>
+        <div><ol>{orderSteps.map((step) => <li key={step}>{step}</li>)}</ol><p className={s.processNote}>Design details, quotations, orders and payment arrangements are agreed directly with the business.</p></div>
+      </section>
+      <ContactBand contactHref="/contact?topic=designs#enquiry" contactLabel="Prepare a design enquiry" primaryLabel="Discuss a design on WhatsApp" title="Your next design starts here." text="Tell us about your custom clothing, uniform, alteration or millinery enquiry." whatsappMessage="Hello FATU.E.D Designs, I would like to discuss a design enquiry." />
+    </div>
   );
 }
