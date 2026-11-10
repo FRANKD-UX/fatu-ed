@@ -17,7 +17,7 @@ export const site = {
     whatsapp: "https://wa.me/27733004914",
     email: "fatuedolie@gmail.com",
     emailUri: "mailto:fatuedolie@gmail.com",
-    location: "Mdantsane, East London, Eastern Cape, South Africa",
+    location: "338 NU 10, Mdantsane, East London, 5219, Eastern Cape, South Africa",
     hours: "By arrangement",
   },
   registration: "2014/107035/07",

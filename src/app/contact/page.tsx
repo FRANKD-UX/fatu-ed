@@ -24,7 +24,7 @@ export default function Contact() {
         title="A conversation starts here"
       >
         <dl className={s.contactDetails}>
-          <div><dt>Location</dt><dd>{site.contact.location}</dd></div>
+          <div><dt>Physical address</dt><dd>{site.contact.location}</dd></div>
           <div>
             <dt>Telephone</dt>
             <dd>
@@ -55,8 +55,8 @@ export default function Contact() {
       >
         <div className={s.mapContainer}>
           <iframe
-            src="https://maps.google.com/maps?q=Mdantsane,+East+London,+Eastern+Cape,+South+Africa&output=embed"
-            title="FATU.E.D location — Mdantsane, East London"
+            src={`https://maps.google.com/maps?q=${encodeURIComponent(site.contact.location)}&output=embed`}
+            title={`FATU.E.D location — ${site.contact.location}`}
             width="100%"
             height="100%"
             loading="lazy"
