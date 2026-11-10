@@ -1,0 +1,15 @@
+.logo {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.page {
+  max-width: 320px;
+  margin-block: 1.5rem;
+}
+
+.page.trading { max-width: 560px; }
+.identity { max-width: 176px; margin-bottom: 1.25rem; }
+.card { max-width: 280px; margin-inline: auto; }

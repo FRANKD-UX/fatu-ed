@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import {
   LazyMotion, domAnimation, m, useMotionValue, useReducedMotion,
-  useScroll, useTransform, useAnimationFrame, useInView, animate as animateValue, wrap,
+  useScroll, useTransform, useSpring, useAnimationFrame, useInView, animate as animateValue, wrap,
 } from "motion/react";
 import type { MotionValue } from "motion/react";
 import { withBasePath } from "@/config/paths";
@@ -167,8 +167,14 @@ function TogetherGallery({ chapter, animate }: { chapter: LookbookChapter; anima
 function RevealPhoto({ photo, index, animate, editorial }: { photo: LookbookPhoto; index: number; animate: boolean; editorial: boolean }) {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start 0.98", "start 0.48"] });
+  const { scrollYProgress: floatProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const stagger = (index % 3) * .055;
-  const y = useTransform(scrollYProgress, [stagger, .84 + stagger], [editorial ? 26 : 18, 0]);
+  const revealY = useTransform(scrollYProgress, [stagger, .84 + stagger], [editorial ? 26 : 18, 0]);
+  // Alternate the drift between neighbours, keeping the garments fully visible.
+  const direction = index % 2 === 0 ? 1 : -1;
+  const drift = useTransform(floatProgress, [0, 1], [12 * direction, -12 * direction]);
+  const floatingY = useTransform(() => revealY.get() + drift.get());
+  const y = useSpring(floatingY, { stiffness: 75, damping: 26, mass: .8 });
   // Content is always readable, even before a reveal or if JavaScript is unavailable.
   const opacity = useTransform(scrollYProgress, [stagger, .84 + stagger], [.65, 1]);
   const scale = useTransform(scrollYProgress, [stagger, .84 + stagger], [.975, 1]);

@@ -61,6 +61,7 @@
 }
 .masonryGrid { columns: 3; column-gap: clamp(1rem, 2.5vw, 2.5rem); }
 .revealPhoto { margin: 0 0 2rem; break-inside: avoid; transform-origin: center; }
+.revealPhoto .imageMat { box-shadow: 0 12px 24px -20px rgba(v.$navy, .4); }
 .editorialGrid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); align-items: start; gap: clamp(1.5rem, 4vw, 4rem);
   .revealPhoto { grid-column: span 5; margin: 0; }
   .revealPhoto:nth-child(4n + 1), .revealPhoto:nth-child(4n) { grid-column: span 7; }

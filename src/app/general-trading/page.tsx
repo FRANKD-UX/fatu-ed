@@ -1,4 +1,4 @@
-import { MediaPlaceholder } from "@/components/ui/MediaPlaceholder";
+import { DivisionLogo } from "@/components/divisions/DivisionLogo";
 import {
   PageHero,
   ContentSection,
@@ -37,7 +37,7 @@ export default function Trading() {
           business.
         </p>
         <p>{trading.availability}</p>
-        <MediaPlaceholder label="General Trading · Optional media" aspectRatio="3 / 2" context="Reserved for approved business imagery. Products and availability are confirmed by enquiry." />
+        <DivisionLogo division="trading" />
       </ContentSection>
       <ContentSection
         label="How we can help"

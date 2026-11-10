@@ -1,4 +1,5 @@
 import { LinkButton } from "@/components/ui/LinkButton";
+import { DivisionLogo } from "@/components/divisions/DivisionLogo";
 import {
   PageHero,
   ContentSection,
@@ -38,6 +39,7 @@ export default function Academy() {
           <strong>Future initiative · Not open for enrolment</strong>
           <p>{academy.notice}</p>
         </div>
+        <DivisionLogo division="academy" />
         <p>{academy.purpose}</p>
         <p>
           The academy is envisioned as a place to learn through making:

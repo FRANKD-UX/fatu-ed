@@ -6,7 +6,7 @@ import { divisions } from "@/content/divisions";
 import { site } from "@/config/site";
 import { pageMetadata } from "@/config/metadata";
 import { withBasePath } from "@/config/paths";
-import { FashionMark } from "@/components/layout/FashionMark";
+import { DivisionLogo } from "@/components/divisions/DivisionLogo";
 import s from "@/components/home/Home.module.scss";
 
 export const metadata = pageMetadata(
@@ -143,19 +143,9 @@ export default function Home() {
           <div className={s.divisionGrid}>
             {divisions.map((division) => (
               <article className={`${s.division} ${s[division.tone]}`} key={division.id}>
-                {division.tone === "designs" ? (
-                  <Link href={division.href} className={s.divisionPhoto} aria-label="Explore FATU.E.D Designs">
-                    <Image src={withBasePath("/images/designs/design-18.jpeg")} alt="Tailored pink skirt suit with textured sleeves and a coordinated wide-brimmed hat" width={829} height={1600} sizes="(max-width: 599px) 29vw, (max-width: 1099px) 25vw, 11vw" loading="lazy" />
-                  </Link>
-                ) : (
-                  <div className={s.divisionIntro}>
-                    {division.tone === "trading" ? <FashionMark className={s.businessIcon} /> : (
-                      <svg className={s.businessIcon} viewBox="0 0 80 80" fill="none" stroke="currentColor" strokeWidth="3" strokeLinejoin="round" aria-hidden="true" focusable="false">
-                        <path d="m10 22 28-12 32 12-28 12zM10 22v12l32 12 28-12M10 38v12l32 12 28-12M10 54v12l32 12 28-12M42 34v12m0 16v16M10 38l13-5m-13 21 13-5M70 22v12m0 16v-9m0 25v-9" />
-                      </svg>
-                    )}
-                  </div>
-                )}
+                <Link href={division.href} className={s.divisionLogo} aria-label={division.cta}>
+                  <DivisionLogo division={division.tone} variant="card" />
+                </Link>
                 <div className={s.divisionBody}>
                   {"future" in division && <span className={s.badge}>Future initiative</span>}
                   <h3>{division.name}</h3>

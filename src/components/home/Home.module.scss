@@ -116,6 +116,7 @@
   .hero .companions { display: flex; inset: 15px 8px 0 auto; width: 100px; gap: 2.5rem; justify-content: flex-start; figure:last-child { margin-left: 0; transform: none; } }
   .hero .diamondFrame { width: 76px; height: 76px; border-width: 3px; border-radius: .8rem; }
 }
+
 .collections { padding-block: 2rem 2.5rem; }
 .sectionHeading { text-align: center; margin: 0 auto 1.5rem;
   h2 { display: flex; align-items: center; justify-content: center; gap: 1.25rem; font-style: italic; margin-bottom: .6rem;
@@ -314,4 +315,37 @@
 @media (max-width: 767px) {
   .collections { width: calc(100% - 2rem); .collectionGrid { grid-template-columns: 1fr; } .collection, .featuredCollection, .collection:last-child { grid-column: auto; width: 100%; } .collectionLink, .featuredCollection .collectionLink { grid-template-columns: .9fr 1.1fr; padding: .5rem; gap: .8rem; } .collectionLink figure, .collectionImage { min-height: 180px; } .featuredCollection figure { padding-right: 4px; border-right-width: 5px; } .featuredCollection .collectionCopy, .collection .collectionCopy { padding: .4rem .2rem; h3 { font-size: clamp(1.25rem, 4.7vw, 1.65rem); } p { font-size: .85rem; } } .collectionCta { font-size: .75rem; padding-inline: .8rem; gap: .6rem; } }
   .businesses { .container { width: calc(100% - 2rem); } .divisionGrid { grid-template-columns: 1fr; } .division { grid-template-columns: 60px minmax(0, 1fr); padding: 1rem 1rem 1rem 2.6rem; gap: .8rem; } .businessIcon { width: 56px; height: 85px; } .divisionBody h3 { font-size: 1.5rem; } .designs { grid-template-columns: .75fr 1.25fr; padding: 0 .8rem 0 0; .divisionPhoto { min-height: 280px; } } }
+}
+
+// Give the approved artwork its full proportions, including lettering and contacts.
+.businesses {
+  .division, .designs {
+    grid-template-columns: minmax(0, 1fr);
+    align-content: start;
+    padding: 1.5rem 1.25rem 1.25rem 2.9rem;
+    gap: 1.25rem;
+  }
+  .divisionLogo {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-width: 0;
+    min-height: 280px;
+  }
+  .divisionBody { min-width: 0; }
+  .divisionLogo:focus-visible { outline: 3px solid v.$gold; outline-offset: 4px; }
+}
+
+@media (min-width: 600px) and (max-width: 1099px) {
+  .businesses {
+    .division, .designs { grid-template-columns: minmax(0, 220px) minmax(0, 1fr); }
+    .divisionLogo { min-height: 0; }
+  }
+}
+
+@media (max-width: 599px) {
+  .businesses {
+    .division, .designs { padding: 1.25rem 1rem 1.25rem 2.6rem; }
+    .divisionLogo { min-height: 0; }
+  }
 }
