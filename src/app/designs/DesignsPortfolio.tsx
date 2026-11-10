@@ -27,9 +27,9 @@ const descriptions = [
   ["Dressed for the occasion", "Group portrait with green and gold skirt outfits, colourful hats and dark suits"],
 ];
 const chapters = [
-  { id: "individual-style", title: "Individual expression", description: "Full skirts, vivid prints and silhouettes with personality.", numbers: [16, 6, 17, 11, 7, 9, 15] },
-  { id: "together", title: "Beautiful together", description: "Coordinated colour. A shared sense of occasion.", numbers: [2, 3, 8, 4, 13, 5] },
+  { id: "together", title: "Beautiful together", description: "Coordinated dresses and hats. A shared sense of occasion.", numbers: [2, 3, 8, 4, 13, 5] },
   { id: "finishing-touches", title: "The finishing touch", description: "Lace, texture and millinery that complete the look.", numbers: [1, 18, 12, 19, 14, 10, 20] },
+  { id: "individual-style", title: "Individual expression", description: "Occasion dresses, vivid prints and silhouettes with personality.", numbers: [9, 11, 16, 6, 17, 7, 15] },
 ];
 
 export function DesignsPortfolio() {

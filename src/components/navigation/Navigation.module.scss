@@ -1,76 +1,96 @@
-@use "../../styles/variables" as v;
+﻿@use "../../styles/variables" as v;
 .nav {
   display: flex;
   align-items: center;
-  gap: 1.9rem;
+  gap: clamp(.8rem, 1.3vw, 1.6rem);
   a {
     min-height: 44px;
     display: inline-flex;
     align-items: center;
-    font-size: 0.8125rem;
-    font-weight: 600;
+    font: 600 clamp(.9rem, 1.15vw, 1.1rem)/1.4 Georgia, serif;
     white-space: nowrap;
-    transition:
-      border-color 0.15s ease,
-      color 0.15s ease;
     text-decoration: none;
-    padding: 0.7rem 0;
-    border-bottom: 2px solid transparent;
-    &[aria-current],
-    &:hover {
-      border-color: v.$gold;
-    }
-    &:active {
-      color: #d8c18e;
-    }
+    padding: .75rem 0;
+    border-bottom: 3px solid transparent;
+    transition: color .15s ease, border-color .15s ease;
+    &[aria-current], &:hover { color: v.$gold; border-color: v.$gold; }
+    &:focus-visible { outline-color: v.$gold; }
+  }
+  .designCta {
+    gap: .55rem;
+    padding: .75rem 1.2rem;
+    margin-left: .4rem;
+    position: relative;
+    color: v.$navy;
+    background: linear-gradient(110deg, #d8bd81, v.$gold);
+    border: 1px solid v.$gold;
+    border-radius: 999px;
+    font-size: clamp(.875rem, 1.1vw, 1rem);
+    box-shadow: 0 2px 8px #0002;
+    svg { width: 20px; height: 30px; flex-shrink: 0; }
+    &::before { content: ""; position: absolute; left: -1rem; height: 2.5rem; width: 1px; background: rgba(v.$gold, .65); }
+    &:hover, &:active { color: v.$navy; background: v.$paper; border-color: v.$gold; }
   }
 }
-.toggle {
-  display: none;
+.ctaArrow {
+  display: inline-block;
+  position: relative;
+  width: 16px;
+  height: 1px;
+  background: currentColor;
+  margin-left: .25rem;
+  &::after { content: ""; position: absolute; right: 0; top: -3px; width: 6px; height: 6px; border-top: 1px solid currentColor; border-right: 1px solid currentColor; transform: rotate(45deg); }
+}
+.toggle { display: none; }
+.menuIcon {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  width: 18px;
+  height: 20px;
+  > span { display: block; height: 1px; width: 18px; background: currentColor; }
+}
+.menuIconOpen {
+  > span:first-child { transform: translateY(5px) rotate(45deg); }
+  > span:nth-child(2) { opacity: 0; }
+  > span:last-child { transform: translateY(-5px) rotate(-45deg); }
+}
+@media (min-width: 1024px) and (max-width: 1200px) {
+  .nav { gap: .8rem; }
+  .nav .designCta { padding-inline: .8rem; margin-left: .3rem; gap: .3rem; }
+  .nav .designCta::before { left: -.65rem; }
 }
 @media (max-width: 1023px) {
   .toggle {
     min-height: 44px;
     display: flex;
     align-items: center;
-    gap: 1rem;
-    color: inherit;
-    background: transparent;
-    border: 1px solid #a6afbc;
-    padding: 0.5rem 0.8rem;
-    font-size: 0.875rem;
-    font-weight: 600;
-    border-radius: 4px;
+    gap: .65rem;
+    color: v.$paper;
+    background: rgba(v.$navy, .75);
+    border: 1px solid v.$gold;
+    padding: .6rem .75rem;
+    font: 600 .875rem/1.5 Georgia, serif;
+    border-radius: 999px;
     cursor: pointer;
-    transition: background-color 0.15s ease;
-    &:hover,
-    &[aria-expanded="true"] {
-      background: v.$blue;
-    }
-    &:active {
-      background: v.$navy;
-    }
+    &:hover, &[aria-expanded="true"] { background: v.$blue; }
+    &:focus-visible { outline-color: v.$gold; }
   }
   .nav {
     display: none;
     position: absolute;
     inset: 100% 0 auto;
     background: v.$navy;
-    color: white;
-    padding: 1rem 1.5rem 2rem;
-    border-top: 1px solid #ffffff25;
-    box-shadow: 0 12px 20px #0002;
-    &.open {
-      display: flex;
-      align-items: stretch;
-      flex-direction: column;
-      gap: 0.3rem;
-    }
-    a {
-      min-height: 44px;
-      display: inline-flex;
-      align-items: center;
-      font-size: 1rem;
-    }
+    color: v.$paper;
+    padding: 1rem 1.25rem 1.5rem;
+    border: 1px solid rgba(v.$gold, .55);
+    border-radius: 0 0 .75rem .75rem;
+    box-shadow: 0 12px 20px #0003;
+    max-height: calc(100dvh - 145px);
+    overflow-y: auto;
+    &.open { display: flex; align-items: stretch; flex-direction: column; gap: .25rem; }
+    a { font-size: 1rem; white-space: normal; }
+    .designCta { margin: .75rem 0 0; justify-content: center; &::before { display: none; } }
   }
 }

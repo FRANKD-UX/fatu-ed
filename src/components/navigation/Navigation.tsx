@@ -3,7 +3,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { navigation } from "@/content/navigation";
+import { FashionMark } from "@/components/layout/FashionMark";
 import styles from "./Navigation.module.scss";
+// Keep the footer's source order while giving fashion prominence in the header.
+const headerNavigation = [navigation[0], navigation[3], navigation[1], navigation[2], navigation[4], navigation[5]];
 export function Navigation() {
   const pathname = usePathname().replace(/\/+$/, "") || "/";
   const [open, setOpen] = useState(false);
@@ -51,7 +54,7 @@ export function Navigation() {
         onClick={() => setOpen(!open)}
       >
         {open ? "Close" : "Menu"}{" "}
-        <span aria-hidden="true">{open ? "×" : "☰"}</span>
+        <span className={`${styles.menuIcon} ${open ? styles.menuIconOpen : ""}`} aria-hidden="true"><span /><span /><span /></span>
       </button>
       <nav
         ref={menu}
@@ -66,7 +69,7 @@ export function Navigation() {
             setOpen(false);
         }}
       >
-        {navigation.map((item) => (
+        {headerNavigation.map((item) => (
           <Link
             key={item.href}
             href={item.href}
@@ -79,6 +82,11 @@ export function Navigation() {
             {item.label}
           </Link>
         ))}
+        <Link href="/contact?topic=designs#enquiry" className={styles.designCta} onClick={() => setOpen(false)}>
+          <FashionMark />
+          Request a Design
+          <span className={styles.ctaArrow} aria-hidden="true" />
+        </Link>
       </nav>
     </>
   );

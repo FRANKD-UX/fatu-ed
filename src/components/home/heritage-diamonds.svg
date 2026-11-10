@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="128" viewBox="0 0 160 128">
+  <!-- Original textile-inspired study based on the supplied visual reference.
+       Stepped nested diamonds, mirrored zigzags and fine stripes carry no assigned ceremonial meaning. -->
+  <defs>
+    <pattern id="stripes" width="16" height="8" patternUnits="userSpaceOnUse">
+      <path fill="#000" d="M0 0h16v8H0z"/>
+      <path fill="#fff" d="M0 0h3v8H0zm5 0h1v8H5zm5 0h2v8h-2z"/>
+    </pattern>
+    <pattern id="zigzags" width="32" height="16" y="8" patternUnits="userSpaceOnUse" viewBox="0 0 32 16"><path fill="#000" d="M0 0h32v16H0z"/><path d="M-16 12h4v-2h4v-2h4v-2h4v-2h4v2h4v2h4v2h4v2h4v-2h4v-2h4v-2h4v-2h4v2h4v2h4v2h4v2" fill="none" stroke="#fff" stroke-width="2"/></pattern>
+    <g id="diamond">
+      <path fill="#000" d="M-2 -38h4v4h-4zM-6 -34h12v4h-12zM-10 -30h20v4h-20zM-14 -26h28v4h-28zM-18 -22h36v4h-36zM-22 -18h44v4h-44zM-26 -14h52v4h-52zM-30 -10h60v4h-60zM-34 -6h68v4h-68zM-38 -2h76v4h-76zM-34 2h68v4h-68zM-30 6h60v4h-60zM-26 10h52v4h-52zM-22 14h44v4h-44zM-18 18h36v4h-36zM-14 22h28v4h-28zM-10 26h20v4h-20zM-6 30h12v4h-12zM-2 34h4v4h-4z"/>
+      <path fill="#fff" d="M-2 -30h4v4h-4zM-6 -26h12v4h-12zM-10 -22h20v4h-20zM-14 -18h28v4h-28zM-18 -14h36v4h-36zM-22 -10h44v4h-44zM-26 -6h52v4h-52zM-30 -2h60v4h-60zM-26 2h52v4h-52zM-22 6h44v4h-44zM-18 10h36v4h-36zM-14 14h28v4h-28zM-10 18h20v4h-20zM-6 22h12v4h-12zM-2 26h4v4h-4z"/>
+      <path fill="#000" d="M-2 -22h4v4h-4zM-6 -18h12v4h-12zM-10 -14h20v4h-20zM-14 -10h28v4h-28zM-18 -6h36v4h-36zM-22 -2h44v4h-44zM-18 2h36v4h-36zM-14 6h28v4h-28zM-10 10h20v4h-20zM-6 14h12v4h-12zM-2 18h4v4h-4z"/>
+      <path fill="#214da0" d="M-2 -14h4v4h-4zM-6 -10h12v4h-12zM-10 -6h20v4h-20zM-14 -2h28v4h-28zM-10 2h20v4h-20zM-6 6h12v4h-12zM-2 10h4v4h-4z"/>
+    </g>
+  </defs>
+  <path fill="#214da0" d="M0 0h160v128H0z"/>
+  <path fill="url(#stripes)" d="M0 0h160v8H0zm0 120h160v8H0z"/>
+  <path fill="url(#zigzags)" d="M0 8h160v16H0z"/>
+  <g transform="translate(0 128) scale(1 -1)"><path fill="url(#zigzags)" d="M0 8h160v16H0z"/></g>
+  <use href="#diamond" x="0" y="64"/>
+  <use href="#diamond" x="80" y="64"/>
+  <use href="#diamond" x="160" y="64"/>
+</svg>
