@@ -24,6 +24,9 @@ const attributes = (html, expression) =>
     match[1].replaceAll("&amp;", "&"),
   );
 const normalized = (path) => `${path.replace(/\/+$/, "")}/`;
+const exportedPathExists = (pathname) =>
+  pathname.startsWith(`${basePath}/`) &&
+  existsSync(join("out", decodeURIComponent(pathname.slice(basePath.length + 1))));
 
 for (const route of routes) {
   const filename = join("out", route, "index.html");
@@ -56,9 +59,7 @@ for (const route of routes) {
       `Asset outside basePath: ${asset}`,
     );
     assert(
-      existsSync(
-        join("out", decodeURIComponent(pathname.slice(basePath.length + 1))),
-      ),
+      exportedPathExists(pathname),
       `Missing asset: ${asset}`,
     );
   }
@@ -82,7 +83,13 @@ for (const [route, { links, ids }] of pages) {
     } else if (link.startsWith("/") && !link.startsWith("//")) {
       const url = new URL(link, siteRoot);
       const target = pages.get(normalized(url.pathname));
-      assert(target, `${route}: unknown internal destination ${link}`);
+      if (!target) {
+        assert(
+          exportedPathExists(url.pathname),
+          `${route}: unknown internal destination ${link}`,
+        );
+        continue;
+      }
       if (url.hash)
         assert(
           target.ids.has(decodeURIComponent(url.hash.slice(1))),
