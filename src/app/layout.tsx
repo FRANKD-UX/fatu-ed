@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { siteUrl } from "@/config/site";
@@ -25,6 +26,7 @@ export default function RootLayout({
         <Header />
         <main id="main-content" tabIndex={-1}>{children}</main>
         <Footer />
+        <WhatsAppButton />
       </body>
     </html>
   );

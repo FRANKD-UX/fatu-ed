@@ -1,4 +1,5 @@
-import { MediaPlaceholder } from "@/components/ui/MediaPlaceholder";
+import Image from "next/image";
+import { withBasePath } from "@/config/paths";
 import Link from "next/link";
 import { LinkButton } from "@/components/ui/LinkButton";
 import { company } from "@/content/company";
@@ -143,7 +144,15 @@ export default function Home() {
         </div>
       </section>
       <section className={s.founder}>
-        <MediaPlaceholder label="Fatima Mugaro · Founder portrait" />
+        <Image
+          src={withBasePath("/images/founder/fatima.jpeg")}
+          alt="Fatima Mugaro — Founder of FATU.E.D"
+          width={480}
+          height={600}
+          sizes="(max-width: 768px) 100vw, 480px"
+          loading="lazy"
+          className={s.founderPortrait}
+        />
         <div className={s.founderCopy}>
           <span className={s.eyebrow}>The woman behind the vision</span>
           <h2>{company.founder}</h2>

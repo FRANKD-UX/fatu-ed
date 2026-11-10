@@ -53,6 +53,18 @@ export default function Contact() {
         label="Business location"
         title="Rooted in the Eastern Cape"
       >
+        <div className={s.mapContainer}>
+          <iframe
+            src="https://maps.google.com/maps?q=Mdantsane,+East+London,+Eastern+Cape,+South+Africa&output=embed"
+            title="FATU.E.D location — Mdantsane, East London"
+            width="100%"
+            height="100%"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            style={{ border: 0 }}
+            allowFullScreen
+          />
+        </div>
         <p>{site.contact.location}.</p>
         <p>
           Please contact us to arrange a meeting and confirm directions before

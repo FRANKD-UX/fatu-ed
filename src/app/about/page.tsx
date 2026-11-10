@@ -1,4 +1,5 @@
-import { MediaPlaceholder } from "@/components/ui/MediaPlaceholder";
+import Image from "next/image";
+import { withBasePath } from "@/config/paths";
 import {
   PageHero,
   ContentSection,
@@ -34,7 +35,15 @@ export default function About() {
       </ContentSection>
       <ContentSection label="Meet the founder" title={company.founder} wide>
         <div className={s.founderProfile}>
-          <MediaPlaceholder label="Fatima Mugaro · Founder portrait" />
+          <Image
+          src={withBasePath("/images/founder/fatima.jpeg")}
+          alt="Fatima Mugaro — Founder of FATU.E.D"
+          width={480}
+          height={600}
+          sizes="(max-width: 768px) 100vw, 480px"
+          loading="lazy"
+          className={s.founderPortrait}
+        />
           <div>
             <p className={s.subheading}>{company.titles}</p>
             {company.profile.founderStory.map((paragraph) => (

@@ -307,3 +307,28 @@
   .contactBand .actions { max-width: none; }
   .contactBand h2 { font-size: 2rem; }
 }
+
+.founderPortrait {
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
+}
+
+.mapContainer {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+  overflow: hidden;
+  border-radius: 4px;
+
+  iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
