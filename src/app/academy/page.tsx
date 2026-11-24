@@ -6,7 +6,7 @@ import {
   ContactBand,
 } from "@/components/divisions/PageShell";
 import { DetailCards } from "@/components/divisions/DetailCards";
-import { AcademyPortrait, AcademySettings } from "@/components/divisions/AcademyMedia";
+import { AcademySettings } from "@/components/divisions/AcademyMedia";
 import { academy } from "@/content/divisions";
 import { company } from "@/content/company";
 import { pageMetadata } from "@/config/metadata";
@@ -47,7 +47,6 @@ export default function Academy() {
         </p>
       </ContentSection>
       <ContentSection label="The foundation" title="Knowledge worth sharing">
-        <AcademyPortrait />
         <p>
           {company.founder} completed a sewing certificate at People’s College
           in Zimbabwe in 1996. Her practical sewing and garment-making

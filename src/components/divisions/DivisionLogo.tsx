@@ -4,22 +4,22 @@ import s from "./DivisionLogo.module.scss";
 
 const logos = {
   trading: {
-    file: "general-trading-logo.png",
+    src: "/images/branding/general-trading-logo.png",
     alt: "FATU.E.D General Trading — Delivery in your time",
     width: 1536,
     height: 1024,
   },
   designs: {
-    file: "designs-logo.jpeg",
+    src: "/images/branding/designs-logo.jpeg",
     alt: "FATU.E.D Designs logo with blue hands, gold lettering and contact details",
     width: 1254,
     height: 1254,
   },
   academy: {
-    file: "academy-logo.jpeg",
-    alt: "F.E.D Old School Academy logo — a proposed sewing and garment-making initiative",
-    width: 1254,
-    height: 1254,
+    src: "/images/academy/fatima-fashion-workshop.webp",
+    alt: "FATU.E.D founder Fatima Mugaro in a fashion design workshop, with the FATU.E.D General Trading logo displayed above her.",
+    width: 1086,
+    height: 1448,
   },
 } as const;
 
@@ -34,7 +34,7 @@ export function DivisionLogo({
   return (
     <Image
       className={`${s.logo} ${s[variant]} ${s[division]}`}
-      src={withBasePath(`/images/branding/${logo.file}`)}
+      src={withBasePath(logo.src)}
       alt={logo.alt}
       width={logo.width}
       height={logo.height}

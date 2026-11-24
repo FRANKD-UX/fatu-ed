@@ -1,12 +1,5 @@
 @use "../../styles/variables" as v;
 
-.portrait {
-  display: block;
-  width: 100%;
-  max-width: 480px;
-  height: auto;
-  margin-bottom: 1.5rem;
-}
 .settings {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));

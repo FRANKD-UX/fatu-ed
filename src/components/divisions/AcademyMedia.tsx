@@ -1,20 +1,4 @@
-import Image from "next/image";
-import { withBasePath } from "@/config/paths";
 import s from "./AcademyMedia.module.scss";
-
-export function AcademyPortrait() {
-  return (
-    <Image
-      src={withBasePath("/images/academy/fatima-fashion-workshop.webp")}
-      alt="FATU.E.D founder Fatima Mugaro in a fashion design workshop, with the FATU.E.D General Trading logo displayed above her."
-      width={1086}
-      height={1448}
-      sizes="(max-width: 528px) calc(100vw - 48px), 480px"
-      loading="lazy"
-      className={s.portrait}
-    />
-  );
-}
 
 export function AcademySettings() {
   return (
