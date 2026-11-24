@@ -6,8 +6,7 @@ import {
   ContactBand,
 } from "@/components/divisions/PageShell";
 import { DetailCards } from "@/components/divisions/DetailCards";
-import { Gallery } from "@/components/divisions/Gallery";
-import { classroomGallery } from "@/content/galleries";
+import { AcademyPortrait, AcademySettings } from "@/components/divisions/AcademyMedia";
 import { academy } from "@/content/divisions";
 import { company } from "@/content/company";
 import { pageMetadata } from "@/config/metadata";
@@ -48,6 +47,7 @@ export default function Academy() {
         </p>
       </ContentSection>
       <ContentSection label="The foundation" title="Knowledge worth sharing">
+        <AcademyPortrait />
         <p>
           {company.founder} completed a sewing certificate at People’s College
           in Zimbabwe in 1996. Her practical sewing and garment-making
@@ -94,15 +94,7 @@ export default function Academy() {
           a future vision; the academy is not currently operating, accredited or
           registered as a college. No recognised qualification is being offered.
         </p>
-        <Gallery
-          images={classroomGallery}
-          placeholders={[
-            { label: "Proposed classroom", context: "Future initiative placeholder. No existing academy facility is represented." },
-            { label: "Practical training space", context: "Future initiative placeholder. No current classes or training facilities are represented." },
-          ]}
-          emptyTitle="A learning environment, envisioned"
-          emptyDescription="The proposed setting would support practical sewing and garment-making. No photographs of an operational academy or current classes are presented here."
-        />
+        <AcademySettings />
       </ContentSection>
       <ContentSection
         label="General interest & enquiries"
